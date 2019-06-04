@@ -1,18 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { HashRouter, Route } from "react-router-dom";
 
-import LoginPage from "./containers/login-page";
-import DashboardContainer from "./containers/dashboard-container";
+import {Header} from "./components/Header";
+import Breadcrumbs from "./components/Breadcrums";
+import Home from "./containers/home";
+import Details from "./containers/details"
+import Cart from "./containers/cart";
 import "./App.css";
 
 class App extends Component {
   render() {
-    console.log("--==>> I am at App <<==--");
     return (
-      <HashRouter>
-        <Route exact path="/dashboard" component={DashboardContainer} />
-        <Route exact path="/" component={LoginPage} />
-      </HashRouter>
+      <Fragment>
+        <Header />
+        <div id="breadcrumOptions">
+          <Breadcrumbs />
+        </div>
+        <HashRouter>
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/details" component={Details} />
+          <Route exact path="/" component={Home} />
+        </HashRouter>
+      </Fragment>
     );
   }
 }
